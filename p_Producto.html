@@ -1,0 +1,97 @@
+<head>
+    <style>
+        input {
+            width: 100%;
+  padding: 3px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+ 
+}
+input[type=color]{
+    height: 50px;
+}
+select {
+            width: 100%;
+  padding: 3px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+ 
+}
+button{
+    width: 100%;
+  padding: 5px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+.tabla{
+    width:70%;
+    margin-left: auto;
+  margin-right: auto;
+  height: 400px;
+}
+/*
+.borde{
+     border: 2px solid #000000;
+    width:50%;
+    margin-left: auto;
+  margin-right: auto;
+  height: 700px;
+  border-radius:25px;
+} */
+    </style>
+</head>
+<div class="borde">
+<div class="tabla">
+    <form>
+        <div>
+            <label>Codigo</label>
+            <input type="text" id="codigo" placeholder="Codigo" required>
+          </div>
+        <div>
+          <label>Nombre</label>
+          <input type="text" id="nombre" placeholder="Nombre" required>
+        </div>
+        <div>
+            <a>Base pintura</a>
+            <select >
+            <option>Blanco</option>
+            <option>Pastel</option>
+            <option>Tint</option>
+            <option>Deep</option>
+            <option>Accent</option>
+          </select>
+        </div>
+        <div>
+            <label for="">Fecha Caducidad</label>
+            <input type="date" min="2022-11-11" required>
+          </div>
+        <div>
+          <label>Precio</label>
+          <input type="number" id="precio" placeholder="Precio"  max="99999999" >
+        </div>
+        <div>
+          <label>Area de aplicacion</label>
+          <select>
+            <option>Techo</option>
+            <option>Pared</option>
+          </select>
+        </div>
+        <div>
+          <label>Color</label>
+          <input type="color" id="color">
+        <div>
+          <label for="">Stock</label>
+          <input type="number" id="stock" required>
+        </div>
+        <div>
+            <label for="">Max</label>
+            <input type="number" id="max" required>
+          </div>
+          <div>
+            <label for="">Min</label>
+            <input type="number" id="min" required>
+          </div>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+      </form>
+    </div>
+</div>

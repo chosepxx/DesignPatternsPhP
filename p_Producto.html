@@ -1,6 +1,35 @@
+
 <head>
-    <style>
-        input {
+  <style>
+
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+
+}
+li {
+float: right;
+
+}
+
+.navBar{
+display: flex;
+padding: 20px;
+border: 1px solid black;
+
+}
+
+a {
+padding: 10px;
+ font-family: Arial; 
+}
+.lancoIcon{
+  margin-left: 100px;
+  
+}
+input {
             width: 100%;
   padding: 3px 20px;
   margin: 8px 0;
@@ -29,17 +58,26 @@ button{
   margin-right: auto;
   height: 400px;
 }
-/*
-.borde{
-     border: 2px solid #000000;
-    width:50%;
-    margin-left: auto;
-  margin-right: auto;
-  height: 700px;
-  border-radius:25px;
-} */
-    </style>
+
+</style>
+  <script src="https://kit.fontawesome.com/83ed3e2cc9.js" crossorigin="anonymous"></script>
+  <ul class="navBar">
+
+      <li class="lancoIcon"><img src="lanco.png" height="50"></img></li>
+      <div  style="position: absolute; right: 0 ;margin-right:50px ; margin-top: 20px">
+      <li><i class="fa-solid fa-right-to-bracket"></i><a href="login">Login</a></li>
+      <li> <i class="fa-solid fa-paint-roller"></i><a href="p_registroPintura.html">Registrar pintura</a></li>
+      <li><i class="fa-solid fa-person"></i><a href="p_Personal.html">Registrar Personal</a></li>
+      <li><i class="fa-solid fa-fill-drip"></i><a href="p_Producto.html">Registrar Producto</a></li>
+      <li><i class="fa-solid fa-user"></i><a href="p_Cliente.html">Registrar Cliente</a></li>
+  
+      </div>
+    </ul>
 </head>
+
+
+
+
 <div class="borde">
 <div class="tabla">
     <form>

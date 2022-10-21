@@ -1,3 +1,4 @@
+<script src="jquery.js"></script> 
 
 <head>
   <style>
@@ -17,7 +18,7 @@ float: right;
 .navBar{
 display: flex;
 padding: 20px;
-border: 1px solid black;
+/*border: 1px solid black;*/
 
 }
 
@@ -27,9 +28,10 @@ padding: 10px;
 }
 .lancoIcon{
   margin-left: 100px;
+  width: 37%;
   
 }
-input {
+ input {
             width: 100%;
   padding: 3px 20px;
   margin: 8px 0;
@@ -39,6 +41,9 @@ input {
 input[type=color]{
     height: 50px;
 }
+input[type=radio]{
+   
+}
 select {
             width: 100%;
   padding: 3px 20px;
@@ -47,16 +52,28 @@ select {
  
 }
 button{
-    width: 100%;
+    width: 40%;
   padding: 5px 20px;
   margin: 8px 0;
   box-sizing: border-box;
 }
 .tabla{
-    width:70%;
-    margin-left: auto;
+  margin-left: auto;
   margin-right: auto;
-  height: 400px;
+  width: 50%;
+  border:1px solid black;
+  border-radius: 25px;
+}
+form{
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+body{
+  background-image: url("fondo.jpg");
+  background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
 }
 
 </style>
@@ -64,7 +81,7 @@ button{
   <ul class="navBar">
 
       <li class="lancoIcon"><img src="lanco.png" height="50"></img></li>
-      <div  style="position: absolute; right: 0 ;margin-right:50px ; margin-top: 20px">
+      <div  style=" right: 0 ;margin-right:40px ; margin-top: 20px">
       <li><i class="fa-solid fa-right-to-bracket"></i><a href="login">Login</a></li>
       <li> <i class="fa-solid fa-paint-roller"></i><a href="p_registroPintura.html">Registrar pintura</a></li>
       <li><i class="fa-solid fa-person"></i><a href="p_Personal.html">Registrar Personal</a></li>

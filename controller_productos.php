@@ -2,6 +2,9 @@
 
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS,DELETE');
+header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 include("producto.php");
 
 $producto = new producto();
@@ -26,6 +29,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
         // $result = $producto->actualizar($req); 
         break;
     case "DELETE":
-        // $result = $producto->eliminar($req["codigo_producto"]); 
+        $result = $producto->eliminar($req["id_producto"]);
         break;
 }

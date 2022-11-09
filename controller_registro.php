@@ -4,7 +4,7 @@
     header('Content-Type: application/json');
     header('Access-Control-Allow-Methods: POST, GET, OPTIONS,DELETE');
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
-    include("registro_pintura.php");
+    include("registro_pinturaServices.php");
 
     $registro_pintura = new registro_pinturaServices();
     $result = "API PHP";
@@ -20,8 +20,13 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
               //  echo json_encode($json);
                 echo json_encode($result);
             }else{
+
                 $result = $registro_pintura->listar();
+              
+               
+//lo que debo de poner, estoy haciendo pruebas
                 echo json_encode($result);
+              //  echo "",$tamanio;
 
             }
            

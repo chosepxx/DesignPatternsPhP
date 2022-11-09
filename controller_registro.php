@@ -20,8 +20,14 @@ switch ($_SERVER['REQUEST_METHOD']) {
             //  echo json_encode($json);
             echo json_encode($result);
         } else {
+
             $result = $registro_pintura->listar();
+
+
+            //lo que debo de poner, estoy haciendo pruebas
             echo json_encode($result);
+            //  echo "",$tamanio;
+
         }
 
         break;

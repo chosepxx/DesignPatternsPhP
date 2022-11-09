@@ -1,6 +1,6 @@
 <?php
 include 'db.php';
-class producto extends db
+class productoServices extends db
 {
 
     function listar_productos()

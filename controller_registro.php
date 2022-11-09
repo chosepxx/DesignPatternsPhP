@@ -4,7 +4,7 @@ header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS,DELETE');
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
-include("registro_pintura.php");
+include("registro_pinturaServices.php");
 
 $registro_pintura = new registro_pinturaServices();
 $result = "API PHP";
@@ -15,7 +15,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
     case "GET":
         if (empty($req["id_registro"]) == false) {
-            $result = $registro_pintura->buscar_registro();
+            $result = $registro_pintura->buscar_por_id($req["id_registro"]);
             //   $json["Registros"][] = $result;
             //  echo json_encode($json);
             echo json_encode($result);

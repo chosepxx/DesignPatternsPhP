@@ -1,11 +1,15 @@
 <?php 
 include 'db.php';
+include 'registro_pinturaO.php';
 
 class registro_pinturaServices extends db{
 
     function listar(){ 
         $query = $this->conectar()->query('SELECT * FROM registro_pintura');
+        $registro = new registro_pinturaO();
         $result = array();
+      //  $myArray[] = $registro;
+    
 
         if($query->rowcount()){
             while($row = $query->fetch(PDO::FETCH_ASSOC)){
@@ -18,8 +22,13 @@ class registro_pinturaServices extends db{
                     "base" => $row["base"],
                     "acabado" => $row["acabado"],
                     "formula_color" => $row["formula_color"],
-                    "tamano_envase" => $row["tamano_envase"]
-    
+                    "tamano_envase" => $row["tamano_envase"],
+                    "nombre_cliente" => "",
+                    "nombre_cliente" => "",
+                    "nombre_registro" => "",
+                    "nombre_empleado" => "",
+                    "nombre_producto"=>""
+
                 );
                 array_push($result,$item);
             }

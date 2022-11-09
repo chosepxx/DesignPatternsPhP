@@ -1,6 +1,6 @@
 <?php
 include 'db.php';
-class empleado extends db
+class empleadoServices extends db
 {
 
     function listar()

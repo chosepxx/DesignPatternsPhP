@@ -7,7 +7,7 @@ header('Access-Control-Allow-Methods: POST, GET, OPTIONS,DELETE');
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 include("producto.php");
 
-$producto = new producto();
+$producto = new productoServices();
 $result = "API PHP";
 $req = json_decode(file_get_contents("php://input"), true);
 

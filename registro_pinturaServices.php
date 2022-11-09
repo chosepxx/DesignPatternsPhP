@@ -1,7 +1,7 @@
 <?php 
 include 'db.php';
 
-class registro_pintura extends db{
+class registro_pinturaServices extends db{
 
     function listar(){ 
         $query = $this->conectar()->query('SELECT * FROM registro_pintura');
@@ -163,6 +163,3 @@ class registro_pintura extends db{
 
 
 }
-
-
-?>

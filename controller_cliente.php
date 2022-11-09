@@ -21,7 +21,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         break;
     case "POST":
-        // $result = $producto->insertar($req);
+         $result = $producto->insertar($req);
         break;
     case "PUT":
         // $result = $producto->actualizar($req); 

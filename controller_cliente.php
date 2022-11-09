@@ -2,17 +2,16 @@
 
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
-include("producto.php");
+include("cliente.php");
 
-$producto = new producto();
+$cliente = new cliente();
 $result = "API PHP";
 $req = json_decode(file_get_contents("php://input"), true);
 
-$json = array();
 switch ($_SERVER['REQUEST_METHOD']) {
 
     case "GET":
-        $result = $producto->listar_productos();
+        $result = $cliente->listar();
         $conteo = count($result);
 
         echo json_encode($result);

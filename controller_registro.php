@@ -7,16 +7,19 @@
     $registro_pintura = new registro_pintura();
     $result = "API PHP";
     $req = json_decode(file_get_contents("php://input"), true);
-
+    $json = array();
 
     switch($_SERVER['REQUEST_METHOD']){
 
         case "GET":
             if(empty($req["id_registro"]) == false){
-                $registro_pintura->buscar_registro();
+                $result = $registro_pintura->buscar_registro();
+             //   $json["Registros"][] = $result;
+              //  echo json_encode($json);
+                echo json_encode($result);
             }else{
                 $result = $registro_pintura->listar();
-               // echo $result;
+                echo json_encode($result);
 
             }
            

@@ -10,7 +10,7 @@ class registro_pintura extends db{
         if($query->rowcount()){
             while($row = $query->fetch(PDO::FETCH_ASSOC)){
                 $item = array(
-
+                    "id_registro" => $row["id_registro"],
                     "fecha_compra" => $row["fecha_compra"],
                     "id_cliente" => $row["id_cliente"],
                     "id_empleado" => $row["id_empleado"],
@@ -26,7 +26,7 @@ class registro_pintura extends db{
 
     
         }
-        echo count($result);
+      //  echo count($result);
         return $result;
     }
 

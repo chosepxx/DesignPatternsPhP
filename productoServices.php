@@ -36,30 +36,76 @@ class productoServices extends db
 
 
 
+    function insertar($req)
+    {
+
+
+        $base_pintura = $req["base_pintura"];
+        $precio = $req["precio"];
+        $area_aplicacion = $req["area_aplicacion"];
+        $fecha_caducidad = $req["fecha_caducidad"];
+        $color_pintura = $req["color_pintura"];
+        $cantidad_stock = $req["cantidad_stock"];
+        $descripcion = $req["descripcion"];
+        $marca = $req["marca"];
+        $max = $req["max"];
+        $min = $req["min"];
+
+        $query = "INSERT INTO productos SET 
+        base_pintura=:base_pintura, precio=:precio,
+        area_aplicacion=:area_aplicacion, fecha_caducidad=:fecha_caducidad, color_pintura=:color_pintura,
+        cantidad_stock=:cantidad_stock, descripcion=:descripcion,marca=:marca,max=:max,min=:min";
+
+
+
+        $stmt = $this->conectar()->prepare($query);
+
+
+        $stmt->bindParam(':base_pintura',   $base_pintura);
+        $stmt->bindParam(':precio',      $precio);
+        $stmt->bindParam(':area_aplicacion',     $area_aplicacion);
+        $stmt->bindParam(':fecha_caducidad',   $fecha_caducidad);
+        $stmt->bindParam(':color_pintura',   $color_pintura);
+        $stmt->bindParam(':cantidad_stock',      $cantidad_stock);
+        $stmt->bindParam(':descripcion',     $descripcion);
+        $stmt->bindParam(':marca',     $marca);
+        $stmt->bindParam(':max',     $max);
+        $stmt->bindParam(':min',     $min);
+
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            print_r("Error: %s \n", $stmt->error);
+            return false;
+        }
+    }
+
+
+
+
     function buscar_por_id($id_producto)
     {
-        $query = $this->conectar()->query('SELECT * FROM registro_pintura WHERE id_registro=id_registro');
-        $result = array();
-
+        $query = $this->conectar()->query("SELECT * FROM productos where id_producto = '" . $id_producto . "' ");
+        $item = array();
         if ($query->rowcount()) {
-            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-                $item = array(
-
-                    "fecha_compra" => $row["fecha_compra"],
-                    "id_cliente" => $row["id_cliente"],
-                    "id_empleado" => $row["id_empleado"],
-                    "id_producto" => $row["id_producto"],
-                    "base" => $row["base"],
-                    "acabado" => $row["acabado"],
-                    "formula_color" => $row["formula_color"],
-                    "tamano_envase" => $row["tamano_envase"]
-
-                );
-                array_push($result, $item);
-            }
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            $item = array(
+                "id_producto" => $row["id_producto"],
+                "base_pintura" => $row["base_pintura"],
+                "precio" => $row["precio"],
+                "area_aplicacion" => $row["area_aplicacion"],
+                "fecha_caducidad" => $row["fecha_caducidad"],
+                "color_pintura" => $row["color_pintura"],
+                "cantidad_stock" => $row["cantidad_stock"],
+                "max" => $row["max"],
+                "min" => $row["min"],
+                "descripcion" => $row["descripcion"],
+                "marca" => $row["marca"]
+            );
         }
-        echo count($result);
-        return $result;
+
+        return $item;
     }
 
 
@@ -70,6 +116,53 @@ class productoServices extends db
         $stmt = $this->conectar()->prepare($query);
         echo $id_producto;
         $stmt->bindParam(':id_producto', $id_producto);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            print_r("Error: %s \n", $stmt->error);
+            return false;
+        }
+    }
+
+
+    function actualizar($req)
+    {
+        $id_producto = $req["id_producto"];
+        $base_pintura = $req["base_pintura"];
+        $precio = $req["precio"];
+        $area_aplicacion = $req["area_aplicacion"];
+        $fecha_caducidad = $req["fecha_caducidad"];
+        $color_pintura = $req["color_pintura"];
+        $cantidad_stock = $req["cantidad_stock"];
+        $descripcion = $req["descripcion"];
+        $marca = $req["marca"];
+        $max = $req["max"];
+        $min = $req["min"];
+
+
+
+
+        $query = "UPDATE productos SET 
+        base_pintura=:base_pintura, precio=:precio,
+        area_aplicacion=:area_aplicacion, fecha_caducidad=:fecha_caducidad, color_pintura=:color_pintura,
+        cantidad_stock=:cantidad_stock, descripcion=:descripcion,marca=:marca,max=:max,min=:min  WHERE id_producto = :id_producto ";
+
+        $stmt = $this->conectar()->prepare($query);
+        $stmt->bindParam(':id_producto',     $id_producto);
+        $stmt->bindParam(':base_pintura',   $base_pintura);
+        $stmt->bindParam(':precio',      $precio);
+        $stmt->bindParam(':area_aplicacion',     $area_aplicacion);
+        $stmt->bindParam(':fecha_caducidad',   $fecha_caducidad);
+        $stmt->bindParam(':color_pintura',   $color_pintura);
+        $stmt->bindParam(':cantidad_stock',      $cantidad_stock);
+        $stmt->bindParam(':descripcion',     $descripcion);
+        $stmt->bindParam(':marca',     $marca);
+        $stmt->bindParam(':max',     $max);
+        $stmt->bindParam(':min',     $min);
+
+
+
 
         if ($stmt->execute()) {
             return true;

@@ -15,18 +15,22 @@ $json = array();
 switch ($_SERVER['REQUEST_METHOD']) {
 
     case "GET":
-        $result = $producto->listar_productos();
-        $conteo = count($result);
+        if ((isset($_GET["id"]))) {
 
-        echo json_encode($result);
+            $result = $producto->buscar_por_id($_GET["id"]);
+            echo json_encode($result);
+        } else {
+            $result = $producto->listar_productos();
+            $conteo = count($result);
 
-
+            echo json_encode($result);
+        }
         break;
     case "POST":
-        // $result = $producto->insertar($req);
+        $result = $producto->insertar($req);
         break;
     case "PUT":
-        // $result = $producto->actualizar($req); 
+        $result = $producto->actualizar($req);
         break;
     case "DELETE":
         $result = $producto->eliminar($req["id_producto"]);

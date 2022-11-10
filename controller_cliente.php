@@ -2,7 +2,7 @@
 
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
-header('Access-Control-Allow-Methods: POST, GET, OPTIONS,DELETE');
+header('Access-Control-Allow-Methods: POST, GET, PUT,OPTIONS,DELETE');
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 include("cliente.php");
 
@@ -21,7 +21,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         break;
     case "POST":
-         $result = $producto->insertar($req);
+        $result = $producto->insertar($req);
         break;
     case "PUT":
         // $result = $producto->actualizar($req); 

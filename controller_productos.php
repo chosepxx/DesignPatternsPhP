@@ -3,7 +3,7 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, GET, OPTIONS,DELETE');
+header('Access-Control-Allow-Methods: POST, GET, PUT,OPTIONS,DELETE');
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 include("productoServices.php");
 
@@ -24,6 +24,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             $conteo = count($result);
 
             echo json_encode($result);
+            http_response_code(200);
         }
         break;
     case "POST":
@@ -31,6 +32,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
     case "PUT":
         $result = $producto->actualizar($req);
+        if ($result) {
+            echo "OK";
+            http_response_code(200);
+        }
+
         break;
     case "DELETE":
         $result = $producto->eliminar($req["id_producto"]);

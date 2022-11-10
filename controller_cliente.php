@@ -14,11 +14,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
     case "GET":
         $result = $cliente->listar();
-        $conteo = count($result);
-
         echo json_encode($result);
-
-
         break;
     case "POST":
         // $result = $producto->insertar($req);

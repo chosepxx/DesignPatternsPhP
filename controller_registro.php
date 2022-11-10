@@ -14,8 +14,8 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
     switch($_SERVER['REQUEST_METHOD']){
 
         case "GET":
-            if(empty($req["id_registro"]) == false){
-                $result = $registro_pintura->buscar_por_id($req["id_registro"]);
+            if((isset($_GET["id"]))){
+                $result = $registro_pintura->buscar_por_id($_GET["id"]);
              //   $json["Registros"][] = $result;
               //  echo json_encode($json);
                 echo json_encode($result);

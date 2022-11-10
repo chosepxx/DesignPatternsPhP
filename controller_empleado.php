@@ -14,7 +14,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
     case "GET":
         $result = $empleado->listar();
-        $conteo = count($result);
+ 
 
         echo json_encode($result);
 

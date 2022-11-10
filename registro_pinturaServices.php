@@ -24,8 +24,6 @@ class registro_pinturaServices extends db{
                     "formula_color" => $row["formula_color"],
                     "tamano_envase" => $row["tamano_envase"],
                     "nombre_cliente" => "",
-                    "nombre_cliente" => "",
-                    "nombre_registro" => "",
                     "nombre_empleado" => "",
                     "nombre_producto"=>""
 
@@ -42,13 +40,13 @@ class registro_pinturaServices extends db{
 //me hace falta
 
     function buscar_por_id($id_registro){ 
-        $query = $this->conectar()->query('SELECT * FROM registro_pintura WHERE id_registro=id_registro');
+        $query = $this->conectar()->query("SELECT * FROM registro_pintura where id_registro = '" . $id_registro . "' ");
         $result = array();
 
         if($query->rowcount()){
             while($row = $query->fetch(PDO::FETCH_ASSOC)){
                 $item = array(
-
+                    "id_registro" => $row["id_registro"],
                     "fecha_compra" => $row["fecha_compra"],
                     "id_cliente" => $row["id_cliente"],
                     "id_empleado" => $row["id_empleado"],
@@ -56,7 +54,10 @@ class registro_pinturaServices extends db{
                     "base" => $row["base"],
                     "acabado" => $row["acabado"],
                     "formula_color" => $row["formula_color"],
-                    "tamano_envase" => $row["tamano_envase"]
+                    "tamano_envase" => $row["tamano_envase"],
+                    "nombre_cliente" => "",
+                    "nombre_empleado" => "",
+                    "nombre_producto"=>""
     
                 );
                 array_push($result,$item);
@@ -64,7 +65,7 @@ class registro_pinturaServices extends db{
 
     
         }
-        echo count($result);
+     
         return $result;
     }
 

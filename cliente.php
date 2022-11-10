@@ -14,15 +14,12 @@ class cliente extends db
                     "id_cliente" => $row["id_cliente"],
                     "nombre" => $row["nombre"],
                     "apellidos" => $row["apellidos"]
-
+                    
                 );
-
-
                 array_push($result, $item);
             }
         }
 
-        //echo ($result);
         return $result;
     }
 }

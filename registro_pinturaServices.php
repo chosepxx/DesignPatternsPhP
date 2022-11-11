@@ -41,10 +41,11 @@ class registro_pinturaServices extends db{
 
     function buscar_por_id($id_registro){ 
         $query = $this->conectar()->query("SELECT * FROM registro_pintura where id_registro = '" . $id_registro . "' ");
-        $result = array();
+        $item = array();
 
         if($query->rowcount()){
-            while($row = $query->fetch(PDO::FETCH_ASSOC)){
+
+           $row = $query->fetch(PDO::FETCH_ASSOC);
                 $item = array(
                     "id_registro" => $row["id_registro"],
                     "fecha_compra" => $row["fecha_compra"],
@@ -60,13 +61,9 @@ class registro_pinturaServices extends db{
                     "nombre_producto"=>""
     
                 );
-                array_push($result,$item);
             }
 
-    
-        }
-     
-        return $result;
+        return $item;
     }
 
 

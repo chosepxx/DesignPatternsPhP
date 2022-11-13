@@ -1,5 +1,7 @@
 <?php
 
+
+
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
@@ -8,6 +10,7 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 include("productoServices.php");
 
 $producto = new productoServices();
+
 $result = "API PHP";
 $req = json_decode(file_get_contents("php://input"), true);
 
@@ -19,7 +22,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
             $result = $producto->buscar_por_id($_GET["id"]);
             echo json_encode($result);
-        } else {
+        }  else {
             $result = $producto->listar_productos();
             $conteo = count($result);
 

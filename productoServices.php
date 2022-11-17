@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+require 'vendor/autoload.php';
 class productoServices extends db
 {
 
@@ -38,10 +38,10 @@ class productoServices extends db
 
     function insertar($req)
     {
+    
 
-
+        $precio = $req["precio"];  
         $base_pintura = $req["base_pintura"];
-        $precio = $req["precio"];
         $area_aplicacion = $req["area_aplicacion"];
         $fecha_caducidad = $req["fecha_caducidad"];
         $color_pintura = $req["color_pintura"];
@@ -82,7 +82,52 @@ class productoServices extends db
     }
 
 
+    function getLastProduct()
+    {
+        $query = $this->conectar()->query('SELECT * FROM productos ORDER BY id_producto DESC LIMIT 1');
+        $item = array();
+        if ($query->rowcount()) {
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            $item = array(
+                "base_pintura" => $row["base_pintura"],
+                "precio" => $row["precio"],
+                "area_aplicacion" => $row["area_aplicacion"],
+                "fecha_caducidad" => $row["fecha_caducidad"],
+                "color_pintura" => $row["color_pintura"],
+                "cantidad_stock" => $row["cantidad_stock"],
+                "max" => $row["max"],
+                "min" => $row["min"],
+                "descripcion" => $row["descripcion"],
+                "marca" => $row["marca"]
+            );
+        }
 
+        return $item;
+    }
+    
+    function getLastProductWithId()
+    {
+        $query = $this->conectar()->query('SELECT * FROM productos ORDER BY id_producto DESC LIMIT 1');
+        $item = array();
+        if ($query->rowcount()) {
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            $item = array(
+                "id_producto"=> $row["id_producto"],
+                "base_pintura" => $row["base_pintura"],
+                "precio" => $row["precio"],
+                "area_aplicacion" => $row["area_aplicacion"],
+                "fecha_caducidad" => $row["fecha_caducidad"],
+                "color_pintura" => $row["color_pintura"],
+                "cantidad_stock" => $row["cantidad_stock"],
+                "max" => $row["max"],
+                "min" => $row["min"],
+                "descripcion" => $row["descripcion"],
+                "marca" => $row["marca"]
+            );
+        }
+
+        return $item;
+    }
 
     function buscar_por_id($id_producto)
     {
@@ -114,7 +159,7 @@ class productoServices extends db
         $query = "DELETE FROM productos where id_producto = :id_producto";
 
         $stmt = $this->conectar()->prepare($query);
-        echo $id_producto;
+    
         $stmt->bindParam(':id_producto', $id_producto);
 
         if ($stmt->execute()) {

@@ -1,6 +1,5 @@
 <?php 
-include 'db.php';
-include 'registro_pinturaO.php';
+require 'vendor/autoload.php';
 
 class registro_pinturaServices extends db{
 
@@ -67,7 +66,48 @@ class registro_pinturaServices extends db{
     }
 
 
+    function getLastRegistro()
+    {
+        $query = $this->conectar()->query('SELECT * FROM registro_pintura ORDER BY id_registro DESC LIMIT 1');
+        $item = array();
+        if ($query->rowcount()) {
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            $item = array(
+                "fecha_compra" => $row["fecha_compra"],
+                "id_cliente" => $row["id_cliente"],
+                "id_empleado" => $row["id_empleado"],
+                "id_producto" => $row["id_producto"],
+                "base" => $row["base"],
+                "acabado" => $row["acabado"],
+                "formula_color" => $row["formula_color"],
+                "tamano_envase" => $row["tamano_envase"]
+            );
+        }
 
+        return $item;
+    }
+    
+    function getLastRegistroWithId()
+    {
+        $query = $this->conectar()->query('SELECT * FROM registro_pintura ORDER BY id_registro DESC LIMIT 1');
+        $item = array();
+        if ($query->rowcount()) {
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            $item = array(
+                "id_registro" => $row["id_registro"],
+                "fecha_compra" => $row["fecha_compra"],
+                "id_cliente" => $row["id_cliente"],
+                "id_empleado" => $row["id_empleado"],
+                "id_producto" => $row["id_producto"],
+                "base" => $row["base"],
+                "acabado" => $row["acabado"],
+                "formula_color" => $row["formula_color"],
+                "tamano_envase" => $row["tamano_envase"]
+            );
+        }
+
+        return $item;
+    }
            function insertar($req){
 
             $fecha_compra = $req["fecha_compra"];
@@ -156,7 +196,7 @@ class registro_pinturaServices extends db{
             $query = "DELETE FROM registro_pintura where id_registro = :id_registro";
 
             $stmt = $this->conectar()->prepare($query);
-            echo $id_registro;
+       
             $stmt->bindParam(':id_registro', $id_registro);
 
             if($stmt->execute()){

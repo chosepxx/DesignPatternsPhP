@@ -146,9 +146,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
     case "POST":
         $result = new Producto($req["area_aplicacion"],$req["base_pintura"]);
-
+      
         if($req["descripcion"] == "Tinte"){
-            $req["precio"]  ($result->getProductPrice(new FactoryTinte()));
+            $req["precio"]  =($result->getProductPrice(new FactoryTinte()));
         }else{
             $req["precio"] =  ($result->getProductPrice(new FactoryPintura()));
             

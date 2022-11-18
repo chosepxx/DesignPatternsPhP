@@ -5,6 +5,8 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Methods: POST, GET, PUT,OPTIONS,DELETE');
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 include("registro_pinturaServices.php");
+require_once 'patrones/observer/RecordObservable.php';
+include("Administrador.php");
 
 $registro_pintura = new registro_pinturaServices();
 $result = "API PHP";
@@ -22,7 +24,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         } else {
 
             $result = $registro_pintura->listar();
-
+       //     $recOb = new RecordObservable();
 
             //lo que debo de poner, estoy haciendo pruebas
             echo json_encode($result);

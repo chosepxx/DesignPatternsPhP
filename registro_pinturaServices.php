@@ -1,6 +1,7 @@
 <?php
 include 'db.php';
 include 'registro_pinturaO.php';
+require 'vendor/autoload.php';
 
 class registro_pinturaServices extends db
 {
@@ -69,8 +70,7 @@ class registro_pinturaServices extends db
 
 
 
-    function insertar($req)
-    {
+           function insertar($req){
 
         $fecha_compra = $req["fecha_compra"];
         $id_cliente = $req["id_cliente"];
@@ -156,9 +156,9 @@ class registro_pinturaServices extends db
     {
         $query = "DELETE FROM registro_pintura where id_registro = :id_registro";
 
-        $stmt = $this->conectar()->prepare($query);
-        echo $id_registro;
-        $stmt->bindParam(':id_registro', $id_registro);
+            $stmt = $this->conectar()->prepare($query);
+            echo $id_registro;
+            $stmt->bindParam(':id_registro', $id_registro);
 
         if ($stmt->execute()) {
             return true;

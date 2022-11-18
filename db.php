@@ -35,4 +35,11 @@ class db
             print_r("Error" . $e->getMessage());
         }
     }
+
+    public function conectarTest(){
+        $conn = new mysqli($this->host, $this->user, $this->password ,$this->db ) or die("Connect failed: %s\n". $conn -> error);
+        return true;
+    }
+   
+    
 }

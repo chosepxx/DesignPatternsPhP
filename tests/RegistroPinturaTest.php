@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 
-
+require 'vendor/autoload.php';
 $registro = new registro_pinturaServices();
 
 /* ./vendor/bin/phpunit tests

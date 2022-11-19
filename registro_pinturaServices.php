@@ -1,7 +1,6 @@
 <?php
-include 'db.php';
 include 'registro_pinturaO.php';
-
+require 'vendor/autoload.php';
 
 class registro_pinturaServices extends db
 {

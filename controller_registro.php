@@ -6,6 +6,7 @@ header('Access-Control-Allow-Methods: POST, GET, PUT,OPTIONS,DELETE');
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 require 'vendor/autoload.php';
 
+
 $registro_pintura = new registro_pinturaServices();
 $result = "API PHP";
 $req = json_decode(file_get_contents("php://input"), true);
@@ -22,7 +23,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         } else {
 
             $result = $registro_pintura->listar();
-
+       //     $recOb = new RecordObservable();
 
             //lo que debo de poner, estoy haciendo pruebas
             echo json_encode($result);

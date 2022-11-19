@@ -179,4 +179,48 @@ class registro_pinturaServices extends db
         $stmt->bindParam(':cod_registro',   $cod_registro);
         $stmt->bindParam(':administrador_observador',   $administrador_observador);
     }
+
+    function getLastRegistro()
+    {
+        $query = $this->conectar()->query('SELECT * FROM registro_pintura ORDER BY id_registro DESC LIMIT 1');
+        $item = array();
+        if ($query->rowcount()) {
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            $item = array(
+                "fecha_compra" => $row["fecha_compra"],
+                "id_cliente" => $row["id_cliente"],
+                "id_empleado" => $row["id_empleado"],
+                "id_producto" => $row["id_producto"],
+                "base" => $row["base"],
+                "acabado" => $row["acabado"],
+                "formula_color" => $row["formula_color"],
+                "tamano_envase" => $row["tamano_envase"]
+            );
+        }
+
+        return $item;
+    }
+    
+    function getLastRegistroWithId()
+    {
+        $query = $this->conectar()->query('SELECT * FROM registro_pintura ORDER BY id_registro DESC LIMIT 1');
+        $item = array();
+        if ($query->rowcount()) {
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            $item = array(
+                "id_registro" => $row["id_registro"],
+                "fecha_compra" => $row["fecha_compra"],
+                "id_cliente" => $row["id_cliente"],
+                "id_empleado" => $row["id_empleado"],
+                "id_producto" => $row["id_producto"],
+                "base" => $row["base"],
+                "acabado" => $row["acabado"],
+                "formula_color" => $row["formula_color"],
+                "tamano_envase" => $row["tamano_envase"]
+            );
+        }
+
+        return $item;
+    }
+
 }

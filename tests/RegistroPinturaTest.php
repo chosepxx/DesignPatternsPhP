@@ -19,7 +19,7 @@ final class RegistroPinturaTest extends PHPUnit\Framework\TestCase
         "fecha_compra" => "2022-10-10",
         "id_cliente" => 1,
         "id_empleado" => 1,
-        "id_producto" => 27,
+        "id_producto" => 1,
         "base" => "Test",
         "acabado" => "Test",
         "formula_color" => "Test123",

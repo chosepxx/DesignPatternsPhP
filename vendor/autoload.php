@@ -10,7 +10,6 @@ if (PHP_VERSION_ID < 50600) {
 require_once __DIR__ . '/composer/autoload_real.php';
 require_once 'db.php';
 require_once 'productoServices.php';
-require_once 'registro_pinturaServices.php';
-require_once 'registro_pinturaO.php';
+
 
 return ComposerAutoloaderInit7e0524c7787714537f7eaccd8dcd476e::getLoader();

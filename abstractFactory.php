@@ -1,16 +1,17 @@
 <?php
 
 namespace abstractFactory;
-use productoServices;
+//use productoServices;
 
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET, PUT,OPTIONS,DELETE');
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+require_once 'vendor/autoload.php';
+//include("../productoServices.php");
 
-include('../productoServices.php');
-$producto = new productoServices();
+//$producto = new productoServices();
 interface ProductFactory
 {
     public function createBase(): IBase;

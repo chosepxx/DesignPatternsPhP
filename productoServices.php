@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 class productoServices extends db
 {
 
@@ -244,6 +244,7 @@ class productoServices extends db
         $marca = $req["marca"];
         $max = $req["max"];
         $min = $req["min"];
+        
 
 
 
@@ -269,6 +270,50 @@ class productoServices extends db
 
 
 
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            print_r("Error: %s \n", $stmt->error);
+            return false;
+        }
+    }
+
+    function listar_historial()
+    {
+        $query = $this->conectar()->query('SELECT * FROM observer');
+        $result = array();
+
+        if ($query->rowcount()) {
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                $item = array(
+                    "id" => $row["id"],
+                    "descripcion" => $row["descripcion"],
+
+                );
+
+
+                array_push($result, $item);
+            }
+        }
+
+        //echo ($result);
+        return $result;
+    }
+
+    function insertarHistorial($req)
+    {
+    
+
+        $descripcion = $req;
+
+        $query = "INSERT INTO observer SET descripcion=:descripcion";
+
+
+
+        $stmt = $this->conectar()->prepare($query);
+
+        $stmt->bindParam(':descripcion',      $descripcion);
+     
         if ($stmt->execute()) {
             return true;
         } else {
